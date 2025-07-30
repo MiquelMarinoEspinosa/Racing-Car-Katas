@@ -43,3 +43,6 @@
 - Remove setter and continue with the `fake class`
 - Test the `check` method with not normal pressure values
 - Add optional nullable `Sensor` parameter to the `Alarm __construct` method
+- Test `Alarm` class instead of `FakeAlarm`
+    - Remove `FakeAlarm` class
+    - Turn `sensor` property into private

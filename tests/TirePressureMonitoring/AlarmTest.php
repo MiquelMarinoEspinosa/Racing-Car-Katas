@@ -29,7 +29,7 @@ class AlarmTest extends TestCase
             ->method('popNextPressurePsiValue')
             ->willReturn($normalPressure);
 
-        $alarm = new FakeAlarm($mockSensor);
+        $alarm = new Alarm($mockSensor);
         $alarm->check();
         $this->assertFalse($alarm->isAlarmOn());
     }
@@ -43,7 +43,7 @@ class AlarmTest extends TestCase
             ->method('popNextPressurePsiValue')
             ->willReturn($notNormalPressure);
 
-        $alarm = new FakeAlarm($mockSensor);
+        $alarm = new Alarm($mockSensor);
         $alarm->check();
         $this->assertTrue($alarm->isAlarmOn());
     }
