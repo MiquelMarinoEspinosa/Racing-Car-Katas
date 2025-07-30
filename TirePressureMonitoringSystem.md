@@ -48,3 +48,9 @@
     - Turn `sensor` property into private
 - Make the `sensor` parameter mandatory
 - Create `mockSensor` at the `setUp` method to reuse it
+- Create the `alarm` class to be reused it
+
+### Conclusions
+- `DIP` has been introduced injecting the `Sensor` class into the `Alarm` class
+- This way the `Alarm` class is more testable being able to reach the `100%` coverage
+- In case that injecting the class it is not feasable in this iteration, the class can be tested using `fake classes` or `setters methods` which would require breaking a little bit the `Alarm` class encapsulation

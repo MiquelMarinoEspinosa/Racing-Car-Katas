@@ -16,16 +16,17 @@ class AlarmTest extends TestCase
     private const float MAX_PRESSURE = 21.0;
 
     private Sensor | MockObject $mockSensor;
+    private Alarm $alarm;
 
     protected function setUp(): void
     {
         $this->mockSensor = $this->createMock(Sensor::class);
+        $this->alarm = new Alarm($this->mockSensor);
     }
 
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
-        $alarm = new Alarm($this->mockSensor);
-        $this->assertFalse($alarm->isAlarmOn());
+        $this->assertFalse($this->alarm->isAlarmOn());
     }
 
     #[DataProvider('normalPressureProvider')]
@@ -36,9 +37,8 @@ class AlarmTest extends TestCase
             ->method('popNextPressurePsiValue')
             ->willReturn($normalPressure);
 
-        $alarm = new Alarm($this->mockSensor);
-        $alarm->check();
-        $this->assertFalse($alarm->isAlarmOn());
+        $this->alarm->check();
+        $this->assertFalse($this->alarm->isAlarmOn());
     }
 
     #[DataProvider('notNormalPressureProvider')]
@@ -49,9 +49,8 @@ class AlarmTest extends TestCase
             ->method('popNextPressurePsiValue')
             ->willReturn($notNormalPressure);
 
-        $alarm = new Alarm($this->mockSensor);
-        $alarm->check();
-        $this->assertTrue($alarm->isAlarmOn());
+        $this->alarm->check();
+        $this->assertTrue($this->alarm->isAlarmOn());
     }
 
     /**
