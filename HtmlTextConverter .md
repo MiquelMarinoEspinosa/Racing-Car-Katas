@@ -31,5 +31,6 @@
         - The `coverage` has increased up to `100%`
 - Extract `fopen` in an `private method` at the `HtmlTextConverter` class
 - Extract `fgets` system call into a private method at the `HtmlTextConverter` class
+- Create a `fake class` and test the empty file case
 
 ### Conclusions

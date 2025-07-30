@@ -29,12 +29,12 @@ class HtmlTextConverter
         return $this->fullFileNameWithPath;
     }
 
-    private function fopen(): mixed
+    protected function fopen(): mixed
     {
         return fopen($this->fullFileNameWithPath, 'r');
     }
 
-    private function fgets(mixed $f): string | false
+    protected function fgets(mixed $f): string | false
     {
         return fgets($f);
     }

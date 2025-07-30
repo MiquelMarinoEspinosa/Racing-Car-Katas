@@ -29,4 +29,10 @@ class HtmlTextConverterTest extends TestCase
         $converter = new HtmlTextConverter($fileName);
         $this->assertSame('This is not &amp; empty &lt; &quot;text&quot;<br />', $converter->convertToHtml());
     }
+
+    public function testUnitShouldConvertToHtmlWhenFileIsEmpty(): void
+    {
+        $converter = new FakeHtmlTextConverter('');
+        $this->assertSame('', $converter->convertToHtml());
+    }
 }
