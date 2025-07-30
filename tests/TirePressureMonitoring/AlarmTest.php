@@ -14,4 +14,11 @@ class AlarmTest extends TestCase
         $alarm = new Alarm();
         $this->assertFalse($alarm->isAlarmOn());
     }
+
+    public function testShouldAlarmBeOffWhenAlarmHasBeenChecked(): void
+    {
+        $alarm = new Alarm();
+        $alarm->check();
+        $this->assertFalse($alarm->isAlarmOn());
+    }
 }

@@ -26,3 +26,6 @@
 
 ### Notes
 - Refactor `testFoo` unit test name
+- Create an initial test for the `check` method which should not turn the alarm on
+    - Unfortunatelly, as expected, the code returns random results regarding the alarm status when the test is executed
+    - At this point some refactor needed to be done in order to make the `Sensor` return the desirable values to be able to test the business logic
