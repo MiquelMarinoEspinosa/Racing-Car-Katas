@@ -26,6 +26,8 @@
 - Fix the initial unit test
 - Create unit test to cover `convertToHtml`
     - An `integration` test has been created with an empty file and it worked
-    - The `coverage` has increased up to `66.67%`
+        - The `coverage` has increased up to `66.67%`
+    - Another `integration` test has been created with a line with html special caracters
+        - The `coverage` has increased up to `100%`
 
 ### Conclusions
