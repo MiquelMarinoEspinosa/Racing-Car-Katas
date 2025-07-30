@@ -41,3 +41,4 @@
     - Add setter method at the `Alarm` clock
     - Override the `Sensor` from the unit test with a mock object
 - Remove setter and continue with the `fake class`
+- Test the `check` method with not normal pressure values

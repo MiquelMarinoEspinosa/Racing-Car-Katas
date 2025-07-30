@@ -21,10 +21,9 @@ class AlarmTest extends TestCase
     }
 
     #[DataProvider('normalPressureProvider')]
-    public function testShouldAlarmBeOffWhenAlarmHasBeenCheckedWithNormalPressure(
+    public function testShouldAlarmBeOffWhenItHasBeenCheckedWithNormalPressure(
         float $normalPressure
-    ): void
-    {
+    ): void {
         $mockSensor = $this->createMock(Sensor::class);
         $mockSensor
             ->method('popNextPressurePsiValue')
@@ -35,6 +34,20 @@ class AlarmTest extends TestCase
         $this->assertFalse($alarm->isAlarmOn());
     }
 
+    #[DataProvider('notNormalPressureProvider')]
+    public function testShouldAlarmBeOnWhenItHasBeenCheckedWithNotNormalPressure(
+        float $notNormalPressure
+    ): void {
+        $mockSensor = $this->createMock(Sensor::class);
+        $mockSensor
+            ->method('popNextPressurePsiValue')
+            ->willReturn($notNormalPressure);
+
+        $alarm = new FakeAlarm($mockSensor);
+        $alarm->check();
+        $this->assertTrue($alarm->isAlarmOn());
+    }
+
     /**
      * @return array<float>
      */
@@ -43,6 +56,17 @@ class AlarmTest extends TestCase
         return [
             'min pressure allowed value' => [self::MIN_PRESSURE],
             'max pressure allowed value' => [self::MAX_PRESSURE]
+        ];
+    }
+
+    /**
+     * @return array<float>
+     */
+    public static function notNormalPressureProvider(): array
+    {
+        return [
+            'min pressure not allowed value' => [self::MIN_PRESSURE - 0.01],
+            'max pressure not allowed value' => [self::MAX_PRESSURE + 0.01]
         ];
     }
 }
