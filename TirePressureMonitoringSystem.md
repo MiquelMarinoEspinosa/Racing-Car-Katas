@@ -40,3 +40,4 @@
 - Implement setter option to override the `Sensor` field
     - Add setter method at the `Alarm` clock
     - Override the `Sensor` from the unit test with a mock object
+- Remove setter and continue with the `fake class`
