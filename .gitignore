@@ -38,3 +38,11 @@ xcuserdata/
 Cargo.lock
 **/*.rs.bk
 target/
+
+/.idea
+/build
+/vendor
+/.vscode
+/.editorconfig
+/.phpunit.result.cache
+/composer.lock
