@@ -29,3 +29,8 @@
 - Create an initial test for the `check` method which should not turn the alarm on
     - Unfortunatelly, as expected, the code returns random results regarding the alarm status when the test is executed
     - At this point some refactor needed to be done in order to make the `Sensor` return the desirable values to be able to test the business logic
+- Create a `fake class` to override the `Sensor` values mocking the `Sensor` class
+    - Create `FakeAlarm` class and extend it from the `Alarm` class
+    - Inject the `Sensor` to the `FakeAlarm`
+    - Break `Alarm` encapsulation to be able to override the the `sensor` field
+    - Mock the `Sensor` at the `AlarmTest` `check method` unit test

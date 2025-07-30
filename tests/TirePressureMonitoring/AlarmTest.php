@@ -6,6 +6,7 @@ namespace Tests\TirePressureMonitoring;
 
 use PHPUnit\Framework\TestCase;
 use RacingCar\TirePressureMonitoring\Alarm;
+use RacingCar\TirePressureMonitoring\Sensor;
 
 class AlarmTest extends TestCase
 {
@@ -15,9 +16,14 @@ class AlarmTest extends TestCase
         $this->assertFalse($alarm->isAlarmOn());
     }
 
-    public function testShouldAlarmBeOffWhenAlarmHasBeenChecked(): void
+    public function testShouldAlarmBeOffWhenAlarmHasBeenCheckedWithNormalLowPressureValue(): void
     {
-        $alarm = new Alarm();
+        $mockSensor = $this->createMock(Sensor::class);
+        $mockSensor
+            ->method('popNextPressurePsiValue')
+            ->willReturn(17.0);
+
+        $alarm = new FakeAlarm($mockSensor);
         $alarm->check();
         $this->assertFalse($alarm->isAlarmOn());
     }

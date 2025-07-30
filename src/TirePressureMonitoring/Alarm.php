@@ -10,7 +10,7 @@ class Alarm
 
     private const HIGH_PRESSURE_THRESHOLD = 21;
 
-    private Sensor $sensor;
+    protected Sensor $sensor;
 
     private bool $isAlarmOn = false;
 
