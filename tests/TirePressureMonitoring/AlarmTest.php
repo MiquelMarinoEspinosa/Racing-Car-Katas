@@ -6,6 +6,7 @@ namespace Tests\TirePressureMonitoring;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use RacingCar\TirePressureMonitoring\Alarm;
 use RacingCar\TirePressureMonitoring\Sensor;
 
@@ -14,9 +15,16 @@ class AlarmTest extends TestCase
     private const float MIN_PRESSURE = 17.0;
     private const float MAX_PRESSURE = 21.0;
 
+    private Sensor | MockObject $mockSensor;
+
+    protected function setUp(): void
+    {
+        $this->mockSensor = $this->createMock(Sensor::class);
+    }
+
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
-        $alarm = new Alarm($this->createMock(Sensor::class));
+        $alarm = new Alarm($this->mockSensor);
         $this->assertFalse($alarm->isAlarmOn());
     }
 
@@ -24,12 +32,11 @@ class AlarmTest extends TestCase
     public function testShouldAlarmBeOffWhenItHasBeenCheckedWithNormalPressure(
         float $normalPressure
     ): void {
-        $mockSensor = $this->createMock(Sensor::class);
-        $mockSensor
+        $this->mockSensor
             ->method('popNextPressurePsiValue')
             ->willReturn($normalPressure);
 
-        $alarm = new Alarm($mockSensor);
+        $alarm = new Alarm($this->mockSensor);
         $alarm->check();
         $this->assertFalse($alarm->isAlarmOn());
     }
@@ -38,12 +45,11 @@ class AlarmTest extends TestCase
     public function testShouldAlarmBeOnWhenItHasBeenCheckedWithNotNormalPressure(
         float $notNormalPressure
     ): void {
-        $mockSensor = $this->createMock(Sensor::class);
-        $mockSensor
+        $this->mockSensor
             ->method('popNextPressurePsiValue')
             ->willReturn($notNormalPressure);
 
-        $alarm = new Alarm($mockSensor);
+        $alarm = new Alarm($this->mockSensor);
         $alarm->check();
         $this->assertTrue($alarm->isAlarmOn());
     }

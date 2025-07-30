@@ -47,3 +47,4 @@
     - Remove `FakeAlarm` class
     - Turn `sensor` property into private
 - Make the `sensor` parameter mandatory
+- Create `mockSensor` at the `setUp` method to reuse it
