@@ -16,7 +16,7 @@ class HtmlTextConverter
         $f = $this->fopen();
 
         $html = '';
-        while (($line = fgets($f)) !== false) {
+        while (($line = $this->fgets($f)) !== false) {
             $line = rtrim($line);
             $html .= htmlspecialchars($line, ENT_QUOTES | ENT_HTML5);
             $html .= '<br />';
@@ -32,5 +32,10 @@ class HtmlTextConverter
     private function fopen(): mixed
     {
         return fopen($this->fullFileNameWithPath, 'r');
+    }
+
+    private function fgets(mixed $f): string | false
+    {
+        return fgets($f);
     }
 }
