@@ -23,5 +23,6 @@
 - Make the parameter mandatory simulating an ideal scenario
 
 ### Notes
+- Fix the initial unit test
 
 ### Conclusions
