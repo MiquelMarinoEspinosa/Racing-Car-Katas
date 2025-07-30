@@ -46,3 +46,4 @@
 - Test `Alarm` class instead of `FakeAlarm`
     - Remove `FakeAlarm` class
     - Turn `sensor` property into private
+- Make the `sensor` parameter mandatory

@@ -16,7 +16,7 @@ class AlarmTest extends TestCase
 
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
-        $alarm = new Alarm();
+        $alarm = new Alarm($this->createMock(Sensor::class));
         $this->assertFalse($alarm->isAlarmOn());
     }
 
