@@ -9,10 +9,17 @@ use RacingCar\TextConverter\HtmlTextConverter;
 
 class HtmlTextConverterTest extends TestCase
 {
-    public function testFoo(): void
+    public function testShouldReturnTheFileName(): void
     {
-        $fileName = 'foo';
+        $fileName = './foo';
         $converter = new HtmlTextConverter($fileName);
         $this->assertSame($fileName, $converter->getFileName());
+    }
+
+    public function testShouldConvertToHtmlWhenFileIsEmpty(): void
+    {
+        $fileName = '/app/tests/TextConverter/empty.txt';
+        $converter = new HtmlTextConverter($fileName);
+        $this->assertSame('', $converter->convertToHtml());
     }
 }
