@@ -34,3 +34,5 @@
     - Inject the `Sensor` to the `FakeAlarm`
     - Break `Alarm` encapsulation to be able to override the the `sensor` field
     - Mock the `Sensor` at the `AlarmTest` `check method` unit test
+- Create a `data provider` to test the min and max allowed values
+    - Add min pressure case

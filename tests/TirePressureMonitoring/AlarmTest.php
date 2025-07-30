@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Tests\TirePressureMonitoring;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use RacingCar\TirePressureMonitoring\Alarm;
 use RacingCar\TirePressureMonitoring\Sensor;
 
 class AlarmTest extends TestCase
 {
-    private const float NORMAL_LOW_PRESSURE = 17.0;
+    private const float MIN_PRESSURE = 17.0;
 
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
@@ -18,15 +19,28 @@ class AlarmTest extends TestCase
         $this->assertFalse($alarm->isAlarmOn());
     }
 
-    public function testShouldAlarmBeOffWhenAlarmHasBeenCheckedWithNormalLowPressureValue(): void
+    #[DataProvider('normalPressureProvider')]
+    public function testShouldAlarmBeOffWhenAlarmHasBeenCheckedWithNormalPressure(
+        float $normalPressure
+    ): void
     {
         $mockSensor = $this->createMock(Sensor::class);
         $mockSensor
             ->method('popNextPressurePsiValue')
-            ->willReturn(self::NORMAL_LOW_PRESSURE);
+            ->willReturn($normalPressure);
 
         $alarm = new FakeAlarm($mockSensor);
         $alarm->check();
         $this->assertFalse($alarm->isAlarmOn());
+    }
+
+    /**
+     * @return array<float>
+     */
+    public static function normalPressureProvider(): array
+    {
+        return [
+            'min pressure allowed value' => [self::MIN_PRESSURE]
+        ];
     }
 }
