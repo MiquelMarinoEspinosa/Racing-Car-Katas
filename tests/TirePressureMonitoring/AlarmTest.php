@@ -35,6 +35,22 @@ class AlarmTest extends TestCase
         $this->assertFalse($alarm->isAlarmOn());
     }
 
+    #[DataProvider('normalPressureProvider')]
+    public function testShouldAlarmBeOffWhenAlarmHasBeenCheckedWithNormalPressureUsingSetter(
+        float $normalPressure
+    ): void
+    {
+        $mockSensor = $this->createMock(Sensor::class);
+        $mockSensor
+            ->method('popNextPressurePsiValue')
+            ->willReturn($normalPressure);
+
+        $alarm = new Alarm();
+        $alarm->setSensor($mockSensor);
+        $alarm->check();
+        $this->assertFalse($alarm->isAlarmOn());
+    }
+
     /**
      * @return array<float>
      */

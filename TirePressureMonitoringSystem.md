@@ -36,3 +36,7 @@
     - Mock the `Sensor` at the `AlarmTest` `check method` unit test
 - Create a `data provider` to test the min and max allowed values
     - Add min pressure case
+    - Add max pressure case
+- Implement setter option to override the `Sensor` field
+    - Add setter method at the `Alarm` clock
+    - Override the `Sensor` from the unit test with a mock object
