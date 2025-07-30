@@ -13,7 +13,7 @@ class HtmlTextConverter
 
     public function convertToHtml(): string
     {
-        $f = fopen($this->fullFileNameWithPath, 'r');
+        $f = $this->fopen();
 
         $html = '';
         while (($line = fgets($f)) !== false) {
@@ -27,5 +27,10 @@ class HtmlTextConverter
     public function getFileName(): string
     {
         return $this->fullFileNameWithPath;
+    }
+
+    private function fopen(): mixed
+    {
+        return fopen($this->fullFileNameWithPath, 'r');
     }
 }

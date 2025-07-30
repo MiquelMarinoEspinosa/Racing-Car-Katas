@@ -29,5 +29,6 @@
         - The `coverage` has increased up to `66.67%`
     - Another `integration` test has been created with a line with html special caracters
         - The `coverage` has increased up to `100%`
+- Extract `fopen` in an `private method` at the `HtmlTextConverter` class
 
 ### Conclusions
