@@ -10,6 +10,8 @@ use RacingCar\TirePressureMonitoring\Sensor;
 
 class AlarmTest extends TestCase
 {
+    private const float NORMAL_LOW_PRESSURE = 17.0;
+
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
         $alarm = new Alarm();
@@ -21,7 +23,7 @@ class AlarmTest extends TestCase
         $mockSensor = $this->createMock(Sensor::class);
         $mockSensor
             ->method('popNextPressurePsiValue')
-            ->willReturn(17.0);
+            ->willReturn(self::NORMAL_LOW_PRESSURE);
 
         $alarm = new FakeAlarm($mockSensor);
         $alarm->check();
