@@ -12,6 +12,7 @@ use RacingCar\TirePressureMonitoring\Sensor;
 class AlarmTest extends TestCase
 {
     private const float MIN_PRESSURE = 17.0;
+    private const float MAX_PRESSURE = 21.0;
 
     public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
@@ -40,7 +41,8 @@ class AlarmTest extends TestCase
     public static function normalPressureProvider(): array
     {
         return [
-            'min pressure allowed value' => [self::MIN_PRESSURE]
+            'min pressure allowed value' => [self::MIN_PRESSURE],
+            'max pressure allowed value' => [self::MAX_PRESSURE]
         ];
     }
 }
