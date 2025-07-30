@@ -24,4 +24,5 @@
 - Implement a `fake class` to override the `Alarm sensor field` with a `mock` with constanc values
 - Once the `check` method has been fully covered, refactor the `Alarm` class to inject the `Sensor` class in the construct and remove the `fake class` to test the `Alarm` class instead
 
-### Steps
+### Notes
+- Refactor `testFoo` unit test name

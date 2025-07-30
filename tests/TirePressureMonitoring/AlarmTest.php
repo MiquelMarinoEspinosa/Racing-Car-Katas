@@ -9,7 +9,7 @@ use RacingCar\TirePressureMonitoring\Alarm;
 
 class AlarmTest extends TestCase
 {
-    public function testFoo(): void
+    public function testShouldTheAlarmBeOffWhenTheAlarmIsCreated(): void
     {
         $alarm = new Alarm();
         $this->assertFalse($alarm->isAlarmOn());
