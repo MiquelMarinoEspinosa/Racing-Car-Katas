@@ -13,12 +13,7 @@ class TicketDispenser
 
     public function getTurnTicket(): TurnTicket
     {
-        $newTurnNumber = $this->nextTurn();
+        $newTurnNumber = $this->turnNumberSequenceProxy->nextTurn();
         return new TurnTicket($newTurnNumber);
-    }
-
-    protected function nextTurn(): int
-    {
-        return $this->turnNumberSequenceProxy->nextTurn();
     }
 }
