@@ -31,4 +31,8 @@
 - Inject the `TelemetryClient` as an optional protected dependency at the `TelemetryDiagnosticControls`
 - Replace the `fake class` for the `real class` and remove the `fake class`
 - Make the `TelemetryClient` dependency mandatory and private
+
 ### Conclusions
+- The `DIP` violation has been solved injecting the `TelemetryClient` as a dependency to make it mockable
+- The strategy followed has been create a `fake class`
+- Once the business logic has fully been covered, the `fake class` has been replaced for the real class injecting the dependency
