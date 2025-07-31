@@ -8,7 +8,12 @@ class TicketDispenser
 {
     public function getTurnTicket(): TurnTicket
     {
-        $newTurnNumber = TurnNumberSequence::nextTurn();
+        $newTurnNumber = $this->nextTurn();
         return new TurnTicket($newTurnNumber);
+    }
+
+    protected function nextTurn(): int
+    {
+        return TurnNumberSequence::nextTurn();
     }
 }

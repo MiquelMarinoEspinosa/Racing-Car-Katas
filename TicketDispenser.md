@@ -32,5 +32,9 @@
         - This test is very fragile, because in case that there are tests that are executed before it, they would alter the final result incrementing the `turnNumber` making the result not constant
     - Implements the `reflection` integration test
     - Implement `setter` at the `TurnNumberSequence`
+    - The only approach which achieved `100%` coverage is the `setter` approach because is the only one that uses the `getter` and `setter` methods at `TurnNumberSequence`
+- Unit test
+    - Extract inline static method into a `protected method` and mock that protected method via a
+        - `partial mock`
 
 ### Conclusions
