@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace RacingCar\TextConverter;
 
+use RacingCar\TextConverter\TextManager\FileTextManager;
+
 class HtmlTextConverter
 {
+    private FileTextManager $fileTextManager;
+
     public function __construct(
         private string $fullFileNameWithPath
     ) {
+        $this->fileTextManager = new FileTextManager();
     }
 
     public function convertToHtml(): string
@@ -31,7 +36,7 @@ class HtmlTextConverter
 
     protected function fopen(): mixed
     {
-        return fopen($this->fullFileNameWithPath, 'r');
+        return $this->fileTextManager->fopen($this->fullFileNameWithPath);
     }
 
     protected function fgets(mixed $f): string | false
