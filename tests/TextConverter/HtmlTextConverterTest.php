@@ -11,23 +11,29 @@ use RacingCar\TextConverter\TextManager\FileTextManager;
 
 class HtmlTextConverterTest extends TestCase
 {
+    private const string FILE_PATH = '/path/foo';
+
     private FileTextManager | MockObject $mockedFileTextManager;
+    private HtmlTextConverter $htmlTextConverter;
 
     protected function setUp(): void
     {
         $this->mockedFileTextManager = $this->createMock(
             FileTextManager::class
         );
+
+        $this->htmlTextConverter = new HtmlTextConverter(
+            self::FILE_PATH,
+            $this->mockedFileTextManager
+        );
     }
 
     public function testShouldReturnTheFileName(): void
     {
-        $fileName = '/path/foo';
-        $converter = new HtmlTextConverter(
-            $fileName,
-            $this->mockedFileTextManager
+        $this->assertSame(
+            self::FILE_PATH,
+            $this->htmlTextConverter->getFileName()
         );
-        $this->assertSame($fileName, $converter->getFileName());
     }
 
     public function testUnitShouldConvertToHtmlWhenFileIsEmpty(): void
@@ -40,11 +46,10 @@ class HtmlTextConverterTest extends TestCase
             ->method('fgets')
             ->willReturn(false);
 
-        $converter = new HtmlTextConverter(
-            '/path/foo',
-            $this->mockedFileTextManager
+        $this->assertSame(
+            '',
+            $this->htmlTextConverter->convertToHtml()
         );
-        $this->assertSame('', $converter->convertToHtml());
     }
 
     public function testUnitShouldConvertToHtmlWhenFileIsNotEmpty(): void
@@ -55,13 +60,14 @@ class HtmlTextConverterTest extends TestCase
 
         $this->mockedFileTextManager
             ->method('fgets')
-            ->willReturnOnConsecutiveCalls('This is not & empty < "text" ', false);
+            ->willReturnOnConsecutiveCalls(
+                'This is not & empty < "text" ',
+                false
+            );
 
-        $converter = new HtmlTextConverter(
-            '/path/foo',
-            $this->mockedFileTextManager
+        $this->assertSame(
+            'This is not &amp; empty &lt; &quot;text&quot;<br />',
+            $this->htmlTextConverter->convertToHtml()
         );
-
-        $this->assertSame('This is not &amp; empty &lt; &quot;text&quot;<br />', $converter->convertToHtml());
     }
 }

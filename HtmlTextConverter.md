@@ -51,5 +51,6 @@
 - Inject `FileTextManager` dependency in the rest of the tests and make the dependency mandatory
 - Remove integration tests
 - Extract `FileTextManager` mock to be configured and reused at the `setUp` method
+- Extract `HtmlTextConverter` to be configured and reused at the `setUp` method
 
 ### Conclusions
