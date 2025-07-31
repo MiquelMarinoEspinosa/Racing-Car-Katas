@@ -9,7 +9,7 @@ use RacingCar\TelemetrySystem\TelemetryDiagnosticControls;
 
 class FakeTelemetryDiagnosticControls extends TelemetryDiagnosticControls
 {
-    public function __construct(protected TelemetryClient $telemetryClient)
+    public function __construct(protected ?TelemetryClient $telemetryClient = null)
     {
     }
 }

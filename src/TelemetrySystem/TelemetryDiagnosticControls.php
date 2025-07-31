@@ -12,11 +12,9 @@ class TelemetryDiagnosticControls
 
     public string $diagnosticInfo = '';
 
-    protected \RacingCar\TelemetrySystem\TelemetryClient $telemetryClient;
-
-    public function __construct()
+    public function __construct(protected ?TelemetryClient $telemetryClient = null)
     {
-        $this->telemetryClient = new TelemetryClient();
+        $this->telemetryClient = $this->telemetryClient === null ? new TelemetryClient() : $this->telemetryClient;
     }
 
     /**
