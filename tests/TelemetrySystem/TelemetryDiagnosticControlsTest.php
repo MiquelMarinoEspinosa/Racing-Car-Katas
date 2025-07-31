@@ -17,6 +17,7 @@ class TelemetryDiagnosticControlsTest extends TestCase
         $this->expectExceptionMessage('Unable to connect.');
         $mockedTelemetryClient = $this->createMock(TelemetryClient::class);
         $mockedTelemetryClient
+            ->expects($this->exactly(5))
             ->method('getOnlineStatus')
             ->willReturn(false);
 
@@ -24,5 +25,28 @@ class TelemetryDiagnosticControlsTest extends TestCase
             $mockedTelemetryClient
         );
         $fakeTelemetryDiagnosticControls->checkTransmission();
+    }
+
+    public function testCheckTransmissionShouldSuccedAndReturnDiagnosticInfo(): void
+    {
+        $expectedDiagnosticInfo = 'OK!';
+        $mockedTelemetryClient = $this->createMock(TelemetryClient::class);
+        $mockedTelemetryClient
+            ->method('getOnlineStatus')
+            ->willReturnOnConsecutiveCalls(false, true, true);
+
+        $mockedTelemetryClient
+            ->method('receive')
+            ->willReturn($expectedDiagnosticInfo);
+
+        $fakeTelemetryDiagnosticControls = new FakeTelemetryDiagnosticControls(
+            $mockedTelemetryClient
+        );
+        $fakeTelemetryDiagnosticControls->checkTransmission();
+
+        $this->assertSame(
+            $expectedDiagnosticInfo,
+            $fakeTelemetryDiagnosticControls->diagnosticInfo
+        );
     }
 }
