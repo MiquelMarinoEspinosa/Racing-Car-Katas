@@ -21,7 +21,7 @@ class TelemetryDiagnosticControlsTest extends TestCase
             ->method('getOnlineStatus')
             ->willReturn(false);
 
-        $fakeTelemetryDiagnosticControls = new FakeTelemetryDiagnosticControls(
+        $fakeTelemetryDiagnosticControls = new TelemetryDiagnosticControls(
             $mockedTelemetryClient
         );
         $fakeTelemetryDiagnosticControls->checkTransmission();
@@ -39,7 +39,7 @@ class TelemetryDiagnosticControlsTest extends TestCase
             ->method('receive')
             ->willReturn($expectedDiagnosticInfo);
 
-        $fakeTelemetryDiagnosticControls = new FakeTelemetryDiagnosticControls(
+        $fakeTelemetryDiagnosticControls = new TelemetryDiagnosticControls(
             $mockedTelemetryClient
         );
         $fakeTelemetryDiagnosticControls->checkTransmission();

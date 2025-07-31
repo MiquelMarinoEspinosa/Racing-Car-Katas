@@ -29,4 +29,5 @@
     - mock the client to fail
     - mock the client to succed
 - Inject the `TelemetryClient` as an optional protected dependency at the `TelemetryDiagnosticControls`
+- Replace the `fake class` for the `real class` and remove the `fake class`
 ### Conclusions
