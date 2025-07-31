@@ -6,15 +6,23 @@ namespace Tests\TelemetrySystem;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
+use RacingCar\TelemetrySystem\TelemetryClient;
 use RacingCar\TelemetrySystem\TelemetryDiagnosticControls;
 
 class TelemetryDiagnosticControlsTest extends TestCase
 {
-    public function testCheckTransmissionShouldSendAndReceiveDiagnosticMessage(): void
+    public function testCheckTransmissionShouldFailedWhenClientCannotConnect(): void
     {
         $this->expectException(Exception::class);
-        $telemetryDiagnosticControls = new TelemetryDiagnosticControls();
-        $telemetryDiagnosticControls->checkTransmission();
-        //$this->assertSame('', $telemetryDiagnosticControls->diagnosticInfo);
+        $this->expectExceptionMessage('Unable to connect.');
+        $mockedTelemetryClient = $this->createMock(TelemetryClient::class);
+        $mockedTelemetryClient
+            ->method('getOnlineStatus')
+            ->willReturn(false);
+
+        $fakeTelemetryDiagnosticControls = new FakeTelemetryDiagnosticControls(
+            $mockedTelemetryClient
+        );
+        $fakeTelemetryDiagnosticControls->checkTransmission();
     }
 }

@@ -24,5 +24,7 @@
 ### Notes
 - Create an initial unit test without mocking the `TelemetryClient`
     - As expected, the unit test randomly failed, because the `TelemetryClient` return random resonpes
-
+- Create a `fake class` strategy
+    - It could also be done with a `setter` method
+    - 
 ### Conclusions

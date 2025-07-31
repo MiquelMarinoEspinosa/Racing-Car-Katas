@@ -12,7 +12,7 @@ class TelemetryDiagnosticControls
 
     public string $diagnosticInfo = '';
 
-    private \RacingCar\TelemetrySystem\TelemetryClient $telemetryClient;
+    protected \RacingCar\TelemetrySystem\TelemetryClient $telemetryClient;
 
     public function __construct()
     {
