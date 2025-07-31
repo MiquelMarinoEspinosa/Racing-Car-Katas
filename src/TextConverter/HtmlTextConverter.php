@@ -18,7 +18,7 @@ class HtmlTextConverter
 
     public function convertToHtml(): string
     {
-        $f = $this->fopen();
+        $f = $this->fileTextManager->fopen($this->fullFileNameWithPath);
 
         $html = '';
         while (($line = $this->fgets($f)) !== false) {
@@ -32,11 +32,6 @@ class HtmlTextConverter
     public function getFileName(): string
     {
         return $this->fullFileNameWithPath;
-    }
-
-    protected function fopen(): mixed
-    {
-        return $this->fileTextManager->fopen($this->fullFileNameWithPath);
     }
 
     protected function fgets(mixed $f): string | false
