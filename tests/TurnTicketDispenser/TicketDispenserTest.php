@@ -53,21 +53,6 @@ class TicketDispenserTest extends TestCase
         TurnNumberSequence::setTurnNumber($previousTurnNumber);
     }
 
-    public function testUnitPartialMockShouldReturnZeroAsTurnNumber(): void
-    {
-        $partialMockTicketDispenser = $this->getMockBuilder(TicketDispenser::class)
-            ->onlyMethods(['nextTurn'])
-            ->getMock();
-
-        $expectedNumber = 70;
-        $partialMockTicketDispenser
-            ->method('nextTurn')
-            ->willReturn($expectedNumber);
-
-        $ticket = $partialMockTicketDispenser->getTurnTicket();
-        $this->assertSame($expectedNumber, $ticket->getTurnNumber());
-    }
-
     public function testUnitFakeClassShouldReturnZeroAsTurnNumber(): void
     {
         $expectedTurnNumber = 82;
