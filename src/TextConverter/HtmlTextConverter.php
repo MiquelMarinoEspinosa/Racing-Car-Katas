@@ -8,10 +8,10 @@ use RacingCar\TextConverter\TextManager\FileTextManager;
 
 class HtmlTextConverter
 {
-    private FileTextManager $fileTextManager;
+    protected FileTextManager $fileTextManager;
 
     public function __construct(
-        private string $fullFileNameWithPath
+        protected string $fullFileNameWithPath
     ) {
         $this->fileTextManager = new FileTextManager();
     }

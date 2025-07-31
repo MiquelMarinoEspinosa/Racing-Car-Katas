@@ -6,6 +6,7 @@ namespace Tests\TextConverter;
 
 use PHPUnit\Framework\TestCase;
 use RacingCar\TextConverter\HtmlTextConverter;
+use RacingCar\TextConverter\TextManager\FileTextManager;
 
 class HtmlTextConverterTest extends TestCase
 {
@@ -32,13 +33,21 @@ class HtmlTextConverterTest extends TestCase
 
     public function testUnitShouldConvertToHtmlWhenFileIsEmpty(): void
     {
-        $converter = new FakeHtmlTextConverter('');
+        $converter = new FakeHtmlTextConverter(
+            '/path/foo',
+            '',
+            $this->createMock(FileTextManager::class)
+        );
         $this->assertSame('', $converter->convertToHtml());
     }
 
     public function testUnitShouldConvertToHtmlWhenFileIsNotEmpty(): void
     {
-        $converter = new FakeHtmlTextConverter('This is not & empty < "text" ');
+        $converter = new FakeHtmlTextConverter(
+            '/path/foo',
+            'This is not & empty < "text" ',
+            $this->createMock(FileTextManager::class)
+        );
         $this->assertSame('This is not &amp; empty &lt; &quot;text&quot;<br />', $converter->convertToHtml());
     }
 }

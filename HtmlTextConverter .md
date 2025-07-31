@@ -40,5 +40,7 @@
 - Create class `FileTextManager` and implement `fopen` and `fgets`
     - `fopen` implemented and used in the `HtmlTextConverter`
     - use `fgets` `FileTextManager class` in `HtmlTextConverter`
+- Mock `FileTextManager` in the `fake class`
+    - mock `fopen` and remove `fopen` method override
 
 ### Conclusions
