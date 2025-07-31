@@ -53,3 +53,5 @@
     - However, that would not be a problem, because the only part which is not covered is the static method call
     - `partial mock` would prevent us from creating a new `fake class`
     - Therefore it might be the ideal solution
+    - These 2 solutions have been removed. Check on the previous commits
+- The `DIP` violation has been fixed using a `proxy` class to proxy the `TurnNumberSequence` and inject it in the `TicketDispenser` make it mockable
