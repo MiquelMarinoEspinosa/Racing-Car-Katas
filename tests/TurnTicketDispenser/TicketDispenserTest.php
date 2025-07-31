@@ -23,14 +23,14 @@ class TicketDispenserTest extends TestCase
         $reflectedTurnNumberSequence = new ReflectionClass(TurnNumberSequence::class);
         $reflectedfTurnNumber = $reflectedTurnNumberSequence->getProperty('turnNumber');
         $previousTurnNumberValue = $reflectedfTurnNumber->getValue();
-        $reflectedfTurnNumber->setValue(45);
+        $reflectedfTurnNumber->setValue(null, 45);
 
         $dispenser = new TicketDispenser();
         $ticket = $dispenser->getTurnTicket();
 
         $this->assertSame(45, $ticket->getTurnNumber());
 
-        $reflectedfTurnNumber->setValue($previousTurnNumberValue);
+        $reflectedfTurnNumber->setValue(null, $previousTurnNumberValue);
     }
 
     public function testSetterShouldReturnZeroAsTurnNumber(): void
