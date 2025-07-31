@@ -11,7 +11,7 @@ class HtmlTextConverterTest extends TestCase
 {
     public function testShouldReturnTheFileName(): void
     {
-        $fileName = './foo';
+        $fileName = '/path/foo';
         $converter = new HtmlTextConverter($fileName);
         $this->assertSame($fileName, $converter->getFileName());
     }

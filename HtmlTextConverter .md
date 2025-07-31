@@ -33,5 +33,9 @@
 - Extract `fgets` system call into a private method at the `HtmlTextConverter` class
 - Create a `fake class` and test the empty file case
 - Test not empty file with the `fake class`
+- Remove integration tests
+    - The coverage is reduced because the `fopen` and `fgets` are not covered with the `fake class` approach
+    - These methods will be relocated to a new external class in order to enhance the `SRP`
+- Refactor `fake class` removing boolean text processed status and add file path to the path unit test
 
 ### Conclusions
