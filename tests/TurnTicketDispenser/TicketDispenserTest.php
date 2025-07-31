@@ -56,7 +56,13 @@ class TicketDispenserTest extends TestCase
     public function testUnitFakeClassShouldReturnZeroAsTurnNumber(): void
     {
         $expectedTurnNumber = 82;
-        $fakeDispenser = new FakeTicketDispenser($expectedTurnNumber);
+        $mockTurnNumberSequenceProxy = $this->createMock(
+            TurnNumberSequenceProxy::class
+        );
+        $mockTurnNumberSequenceProxy->method('nextTurn')
+            ->willReturn($expectedTurnNumber);
+
+        $fakeDispenser = new FakeTicketDispenser($mockTurnNumberSequenceProxy);
 
         $ticket = $fakeDispenser->getTurnTicket();
         $this->assertSame($expectedTurnNumber, $ticket->getTurnNumber());
