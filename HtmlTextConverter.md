@@ -54,3 +54,11 @@
 - Extract `HtmlTextConverter` to be configured and reused at the `setUp` method
 
 ### Conclusions
+- The `SRP` violation has been removed
+- There is still some refactor that could be done with more context
+    - The file name parameter should be responsability of the `FileTextManager`
+    - Making the `FileTextManager` design more insightfull
+        - Adding `interface` to manage different text managers
+        - Keeping the file descriptor in the `FileTextManager`
+        - The current `fgets` implementation it is too coupled with the `fgets` system called
+- The unit test has been implemented with the `100%` coverage
