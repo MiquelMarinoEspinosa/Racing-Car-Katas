@@ -12,9 +12,8 @@ class TelemetryDiagnosticControls
 
     public string $diagnosticInfo = '';
 
-    public function __construct(protected ?TelemetryClient $telemetryClient = null)
+    public function __construct(private TelemetryClient $telemetryClient)
     {
-        $this->telemetryClient = $this->telemetryClient === null ? new TelemetryClient() : $this->telemetryClient;
     }
 
     /**
