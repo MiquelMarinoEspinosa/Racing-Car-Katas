@@ -22,6 +22,7 @@
 - Finally, once the `100%` coverage has been reached, inject `TelemetryClient` into `TelemetryDiagnosticControls`
 
 ### Notes
-
+- Create an initial unit test without mocking the `TelemetryClient`
+    - As expected, the unit test randomly failed, because the `TelemetryClient` return random resonpes
 
 ### Conclusions
