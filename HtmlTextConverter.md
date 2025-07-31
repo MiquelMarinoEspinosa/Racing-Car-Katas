@@ -45,5 +45,6 @@
     - mock `fgets` and remove `fgets` method
     - mock `FileTextManager` with not empty file expectations
 - Inline `fopen` `HtmlTextConverter` method
+- Inline `fgets` `HtmlTextConverter` method
 
 ### Conclusions

@@ -21,7 +21,7 @@ class HtmlTextConverter
         $f = $this->fileTextManager->fopen($this->fullFileNameWithPath);
 
         $html = '';
-        while (($line = $this->fgets($f)) !== false) {
+        while (($line = $this->fileTextManager->fgets($f)) !== false) {
             $line = rtrim($line);
             $html .= htmlspecialchars($line, ENT_QUOTES | ENT_HTML5);
             $html .= '<br />';
@@ -32,10 +32,5 @@ class HtmlTextConverter
     public function getFileName(): string
     {
         return $this->fullFileNameWithPath;
-    }
-
-    protected function fgets(mixed $f): string | false
-    {
-        return $this->fileTextManager->fgets($f);
     }
 }
