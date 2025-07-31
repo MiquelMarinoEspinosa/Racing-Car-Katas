@@ -11,14 +11,14 @@ use ReflectionClass;
 
 class TicketDispenserTest extends TestCase
 {
-    public function testShouldReturnZeroAsTurnNumber(): void
+    public function testIntegrationShouldReturnZeroAsTurnNumber(): void
     {
         $dispenser = new TicketDispenser();
         $ticket = $dispenser->getTurnTicket();
         $this->assertSame(0, $ticket->getTurnNumber());
     }
 
-    public function testReflectionShouldReturnZeroAsTurnNumber(): void
+    public function testIntegrationReflectionShouldReturnZeroAsTurnNumber(): void
     {
         $reflectedTurnNumberSequence = new ReflectionClass(TurnNumberSequence::class);
         $reflectedfTurnNumber = $reflectedTurnNumberSequence->getProperty('turnNumber');
@@ -33,7 +33,7 @@ class TicketDispenserTest extends TestCase
         $reflectedfTurnNumber->setValue(null, $previousTurnNumberValue);
     }
 
-    public function testSetterShouldReturnZeroAsTurnNumber(): void
+    public function testIntegrationSetterShouldReturnZeroAsTurnNumber(): void
     {
         $dispenser = new TicketDispenser();
         $previousTurnNumber = TurnNumberSequence::getTurnNumber();
@@ -46,7 +46,7 @@ class TicketDispenserTest extends TestCase
         TurnNumberSequence::setTurnNumber($previousTurnNumber);
     }
 
-    public function testPartialMockShouldReturnZeroAsTurnNumber(): void
+    public function testUnitPartialMockShouldReturnZeroAsTurnNumber(): void
     {
         $partialMockTicketDispenser = $this->getMockBuilder(TicketDispenser::class)
             ->onlyMethods(['nextTurn'])
@@ -61,7 +61,7 @@ class TicketDispenserTest extends TestCase
         $this->assertSame($expectedNumber, $ticket->getTurnNumber());
     }
 
-    public function testFakeClassShouldReturnZeroAsTurnNumber(): void
+    public function testUnitFakeClassShouldReturnZeroAsTurnNumber(): void
     {
         $expectedTurnNumber = 82;
         $fakeDispenser = new FakeTicketDispenser($expectedTurnNumber);

@@ -37,5 +37,13 @@
     - Extract inline static method into a `protected method` and mock that protected method via a
         - `partial mock`
         - `fake test`
+- Create a `TurnNumberSequenceProxy` to encapsulate the `TurnNumberSequence`
+    - Instantiate the class inline in the `TicketDispenser __construct` method
 
 ### Conclusions
+- The code can be covered `100%` with `integration tests`
+    - The most conservative and may be ideal approach would be use `reflection` to override the `turnNumber` value
+- The code cannot be `100%` covered by `unit tests`
+    - However, that would not be a problem, because the only part which is not covered is the static method call
+    - `partial mock` would prevent us from creating a new `fake class`
+    - Therefore it might be the ideal solution

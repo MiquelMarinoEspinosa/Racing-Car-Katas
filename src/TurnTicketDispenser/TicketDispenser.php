@@ -6,6 +6,13 @@ namespace RacingCar\TurnTicketDispenser;
 
 class TicketDispenser
 {
+    private TurnNumberSequenceProxy $turnNumberSequenceProxy;
+
+    public function __construct()
+    {
+        $this->turnNumberSequenceProxy = new TurnNumberSequenceProxy();
+    }
+
     public function getTurnTicket(): TurnTicket
     {
         $newTurnNumber = $this->nextTurn();
@@ -14,6 +21,6 @@ class TicketDispenser
 
     protected function nextTurn(): int
     {
-        return TurnNumberSequence::nextTurn();
+        return $this->turnNumberSequenceProxy->nextTurn();
     }
 }
