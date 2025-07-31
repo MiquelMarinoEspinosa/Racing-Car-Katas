@@ -42,6 +42,7 @@
     - Inject the proxy as an optional parameter at the `TicketDispenser __construct` method
     - Remove partial mock unit test
     - Mock proxy at the `fake class`
+    - Remove the `fake class` at the `unit test` and `unit test` the real class
 
 ### Conclusions
 - The code can be covered `100%` with `integration tests`

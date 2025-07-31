@@ -62,7 +62,7 @@ class TicketDispenserTest extends TestCase
         $mockTurnNumberSequenceProxy->method('nextTurn')
             ->willReturn($expectedTurnNumber);
 
-        $fakeDispenser = new FakeTicketDispenser($mockTurnNumberSequenceProxy);
+        $fakeDispenser = new TicketDispenser($mockTurnNumberSequenceProxy);
 
         $ticket = $fakeDispenser->getTurnTicket();
         $this->assertSame($expectedTurnNumber, $ticket->getTurnNumber());
