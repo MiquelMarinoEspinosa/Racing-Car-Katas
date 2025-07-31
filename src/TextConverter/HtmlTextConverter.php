@@ -41,6 +41,6 @@ class HtmlTextConverter
 
     protected function fgets(mixed $f): string | false
     {
-        return fgets($f);
+        return $this->fileTextManager->fgets($f);
     }
 }

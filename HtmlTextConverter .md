@@ -37,7 +37,8 @@
     - The coverage is reduced because the `fopen` and `fgets` are not covered with the `fake class` approach
     - These methods will be relocated to a new external class in order to enhance the `SRP`
 - Refactor `fake class` removing boolean text processed status and add file path to the path unit test
-- Create class `FileManager` and implement `fopen` and `fgets`
+- Create class `FileTextManager` and implement `fopen` and `fgets`
     - `fopen` implemented and used in the `HtmlTextConverter`
+    - use `fgets` `FileTextManager class` in `HtmlTextConverter`
 
 ### Conclusions
