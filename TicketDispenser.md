@@ -44,6 +44,7 @@
     - Mock proxy at the `fake class`
     - Remove the `fake class` at the `unit test` and `unit test` the real class
     - Inline the `nextTurn` method in the `TicketDispenser`
+    - Make the `TurnNumberSequenceProxy` mandatory
 
 ### Conclusions
 - The code can be covered `100%` with `integration tests`
