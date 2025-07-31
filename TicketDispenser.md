@@ -31,5 +31,6 @@
     - Fix the initial integration test
         - This test is very fragile, because in case that there are tests that are executed before it, they would alter the final result incrementing the `turnNumber` making the result not constant
     - Implements the `reflection` integration test
+    - Implement `setter` at the `TurnNumberSequence`
 
 ### Conclusions

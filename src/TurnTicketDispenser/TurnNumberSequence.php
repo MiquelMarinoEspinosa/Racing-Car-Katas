@@ -12,4 +12,14 @@ class TurnNumberSequence
     {
         return self::$turnNumber++;
     }
+
+    public static function setTurnNumber(int $turnNumber): void
+    {
+        self::$turnNumber = $turnNumber;
+    }
+
+    public static function getTurnNumber(): int
+    {
+        return self::$turnNumber;
+    }
 }
