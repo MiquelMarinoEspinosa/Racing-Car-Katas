@@ -6,9 +6,9 @@ namespace RacingCar\TextConverter\TextManager;
 
 class FileTextManager
 {
-    public function fopen(string $filePath): mixed
+    public function fopen(string $filePath, string $mode): mixed
     {
-        return fopen($filePath, 'r');
+        return fopen($filePath, $mode);
     }
 
     public function fgets(mixed $file): string | false

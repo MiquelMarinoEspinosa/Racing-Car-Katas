@@ -46,5 +46,6 @@
     - mock `FileTextManager` with not empty file expectations
 - Inline `fopen` `HtmlTextConverter` method
 - Inline `fgets` `HtmlTextConverter` method
+- Add `mode` parameter to the `fopen FileTextManager` method
 
 ### Conclusions

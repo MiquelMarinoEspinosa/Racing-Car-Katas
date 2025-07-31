@@ -18,7 +18,7 @@ class HtmlTextConverter
 
     public function convertToHtml(): string
     {
-        $f = $this->fileTextManager->fopen($this->fullFileNameWithPath);
+        $f = $this->fileTextManager->fopen($this->fullFileNameWithPath, 'r');
 
         $html = '';
         while (($line = $this->fileTextManager->fgets($f)) !== false) {
