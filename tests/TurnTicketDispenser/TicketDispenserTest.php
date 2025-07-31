@@ -7,13 +7,16 @@ namespace Tests\TurnTicketDispenser;
 use PHPUnit\Framework\TestCase;
 use RacingCar\TurnTicketDispenser\TicketDispenser;
 use RacingCar\TurnTicketDispenser\TurnNumberSequence;
+use RacingCar\TurnTicketDispenser\TurnNumberSequenceProxy;
 use ReflectionClass;
 
 class TicketDispenserTest extends TestCase
 {
     public function testIntegrationShouldReturnZeroAsTurnNumber(): void
     {
-        $dispenser = new TicketDispenser();
+        $dispenser = new TicketDispenser(
+            new TurnNumberSequenceProxy()
+        );
         $ticket = $dispenser->getTurnTicket();
         $this->assertSame(0, $ticket->getTurnNumber());
     }
@@ -25,7 +28,9 @@ class TicketDispenserTest extends TestCase
         $previousTurnNumberValue = $reflectedfTurnNumber->getValue();
         $reflectedfTurnNumber->setValue(null, 45);
 
-        $dispenser = new TicketDispenser();
+        $dispenser = new TicketDispenser(
+            new TurnNumberSequenceProxy()
+        );
         $ticket = $dispenser->getTurnTicket();
 
         $this->assertSame(45, $ticket->getTurnNumber());
@@ -35,7 +40,9 @@ class TicketDispenserTest extends TestCase
 
     public function testIntegrationSetterShouldReturnZeroAsTurnNumber(): void
     {
-        $dispenser = new TicketDispenser();
+        $dispenser = new TicketDispenser(
+            new TurnNumberSequenceProxy()
+        );
         $previousTurnNumber = TurnNumberSequence::getTurnNumber();
         $expectedNumber = 67;
         TurnNumberSequence::setTurnNumber($expectedNumber);

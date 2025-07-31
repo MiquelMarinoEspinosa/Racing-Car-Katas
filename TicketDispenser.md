@@ -39,6 +39,7 @@
         - `fake test`
 - Create a `TurnNumberSequenceProxy` to encapsulate the `TurnNumberSequence`
     - Instantiate the class inline in the `TicketDispenser __construct` method
+    - Inject the proxy as an optional parameter at the `TicketDispenser __construct` method
 
 ### Conclusions
 - The code can be covered `100%` with `integration tests`
