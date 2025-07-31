@@ -10,9 +10,8 @@ class HtmlTextConverter
 {
     public function __construct(
         private string $fullFileNameWithPath,
-        private ?FileTextManager $fileTextManager = null
+        private FileTextManager $fileTextManager
     ) {
-        $this->fileTextManager = $this->fileTextManager === null ? new FileTextManager() : $this->fileTextManager;
     }
 
     public function convertToHtml(): string

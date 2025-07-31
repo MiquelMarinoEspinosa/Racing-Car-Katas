@@ -48,5 +48,6 @@
 - Inline `fgets` `HtmlTextConverter` method
 - Add `mode` parameter to the `fopen FileTextManager` method
 - Inject `FileTextManager` as `HtmlTextConverter` optional dependency and remove `FakHtmlTextConverter` using in the unit tests the real class
+- Inject `FileTextManager` dependency in the rest of the tests and make the dependency mandatory
 
 ### Conclusions
