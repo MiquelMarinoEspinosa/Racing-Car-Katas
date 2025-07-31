@@ -60,4 +60,13 @@ class TicketDispenserTest extends TestCase
         $ticket = $partialMockTicketDispenser->getTurnTicket();
         $this->assertSame($expectedNumber, $ticket->getTurnNumber());
     }
+
+    public function testFakeClassShouldReturnZeroAsTurnNumber(): void
+    {
+        $expectedTurnNumber = 82;
+        $fakeDispenser = new FakeTicketDispenser($expectedTurnNumber);
+
+        $ticket = $fakeDispenser->getTurnTicket();
+        $this->assertSame($expectedTurnNumber, $ticket->getTurnNumber());
+    }
 }

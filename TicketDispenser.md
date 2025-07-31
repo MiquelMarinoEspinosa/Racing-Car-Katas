@@ -36,5 +36,6 @@
 - Unit test
     - Extract inline static method into a `protected method` and mock that protected method via a
         - `partial mock`
+        - `fake test`
 
 ### Conclusions
