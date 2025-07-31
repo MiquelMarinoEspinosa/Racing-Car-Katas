@@ -52,10 +52,21 @@ class HtmlTextConverterTest extends TestCase
 
     public function testUnitShouldConvertToHtmlWhenFileIsNotEmpty(): void
     {
+        $mockedFileTextManager = $this->createMock(FileTextManager::class);
+
+        $mockedFileTextManager
+            ->method('fopen')
+            ->willReturn(new class{});
+
+        $mockedFileTextManager
+            ->method('fgets')
+            ->willReturnOnConsecutiveCalls('This is not & empty < "text" ', false);
+
         $converter = new FakeHtmlTextConverter(
             '/path/foo',
-            $this->createMock(FileTextManager::class)
+            $mockedFileTextManager
         );
+
         $this->assertSame('This is not &amp; empty &lt; &quot;text&quot;<br />', $converter->convertToHtml());
     }
 }
