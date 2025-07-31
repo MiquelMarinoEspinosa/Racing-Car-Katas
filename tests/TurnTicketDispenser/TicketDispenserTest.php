@@ -9,10 +9,10 @@ use RacingCar\TurnTicketDispenser\TicketDispenser;
 
 class TicketDispenserTest extends TestCase
 {
-    public function testFoo(): void
+    public function testShouldReturnZeroAsTurnNumber(): void
     {
         $dispenser = new TicketDispenser();
         $ticket = $dispenser->getTurnTicket();
-        $this->assertSame(-1, $ticket->getTurnNumber());
+        $this->assertSame(0, $ticket->getTurnNumber());
     }
 }
