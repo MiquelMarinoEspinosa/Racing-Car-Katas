@@ -43,7 +43,7 @@ class HtmlTextConverterTest extends TestCase
             ->method('fgets')
             ->willReturn(false);
 
-        $converter = new FakeHtmlTextConverter(
+        $converter = new HtmlTextConverter(
             '/path/foo',
             $mockedFileTextManager
         );
@@ -62,7 +62,7 @@ class HtmlTextConverterTest extends TestCase
             ->method('fgets')
             ->willReturnOnConsecutiveCalls('This is not & empty < "text" ', false);
 
-        $converter = new FakeHtmlTextConverter(
+        $converter = new HtmlTextConverter(
             '/path/foo',
             $mockedFileTextManager
         );

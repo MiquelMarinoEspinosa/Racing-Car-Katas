@@ -8,12 +8,11 @@ use RacingCar\TextConverter\TextManager\FileTextManager;
 
 class HtmlTextConverter
 {
-    protected FileTextManager $fileTextManager;
-
     public function __construct(
-        protected string $fullFileNameWithPath
+        private string $fullFileNameWithPath,
+        private ?FileTextManager $fileTextManager = null
     ) {
-        $this->fileTextManager = new FileTextManager();
+        $this->fileTextManager = $this->fileTextManager === null ? new FileTextManager() : $this->fileTextManager;
     }
 
     public function convertToHtml(): string
