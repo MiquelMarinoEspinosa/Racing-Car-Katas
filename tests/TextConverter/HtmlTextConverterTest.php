@@ -15,29 +15,9 @@ class HtmlTextConverterTest extends TestCase
         $fileName = '/path/foo';
         $converter = new HtmlTextConverter(
             $fileName,
-            new FileTextManager()
+            $this->createMock(FileTextManager::class)
         );
         $this->assertSame($fileName, $converter->getFileName());
-    }
-
-    public function testShouldConvertToHtmlWhenFileIsEmpty(): void
-    {
-        $fileName = '/app/tests/TextConverter/empty.txt';
-        $converter = new HtmlTextConverter(
-            $fileName,
-            new FileTextManager()
-        );
-        $this->assertSame('', $converter->convertToHtml());
-    }
-
-    public function testShouldConvertToHtmlWhenFileIsNotEmpty(): void
-    {
-        $fileName = '/app/tests/TextConverter/not_empty.txt';
-        $converter = new HtmlTextConverter(
-            $fileName,
-            new FileTextManager()
-        );
-        $this->assertSame('This is not &amp; empty &lt; &quot;text&quot;<br />', $converter->convertToHtml());
     }
 
     public function testUnitShouldConvertToHtmlWhenFileIsEmpty(): void
