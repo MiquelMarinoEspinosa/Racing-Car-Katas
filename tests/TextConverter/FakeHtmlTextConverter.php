@@ -11,20 +11,7 @@ class FakeHtmlTextConverter extends HtmlTextConverter
 {
     public function __construct(
         protected string $fullFileNameWithPath,
-        private string $text,
         protected FileTextManager $fileTextManager
     ){
-    }
-
-    protected function fgets(mixed $f): string | false
-    {
-        if ($this->text == '') {
-            return false;
-        }
-
-        $text = $this->text;
-        $this->text = '';
-
-        return $text;
     }
 }
